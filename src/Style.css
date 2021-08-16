@@ -1,0 +1,57 @@
+:root {
+    --background-black: #1e1f29;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-black);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+}
+
+.header-title {
+    color: white;
+}
+
+.button-restore {
+    border: none;
+    outline: none;
+}
+
+.button-show-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    background-color: var(--background-black);
+    color: white;
+    font-size: 40px;
+    border: 2px solid white;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.button-show-modal:hover {
+    background-color: white;
+    border-color: var(--background-black);
+    color: var(--background-black);
+    font-size: 50px;
+}
+
+@media screen and (min-width: 1300px) {
+    .header {
+        width: 70%;
+    }
+}
