@@ -1,20 +1,40 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { showOrHideModalAction } from '../actions/actions'
+import { addItem } from '../actions/actions'
 
 function Form() {
 
-    const modal = useSelector(state => { return state })
+    const [name, setName] = useState('')
+    const [amount, setAmount] = useState(1)
+    const [price, setPrice] = useState(1.00)
+
     const dispatch = useDispatch()
 
-    function closeModal(event) {
+    function onHandleChange(event) {
+        if (event.target.id === 'name') {
+            setName(event.target.value)
+        }
+        if (event.target.id === 'amount') {
+            setAmount(event.target.value)
+        }
+        if (event.target.id === 'price') {
+            setPrice(event.target.value)
+        }
+    }
+
+    function AddItem(event) {
         event.preventDefault()
-        dispatch(showOrHideModalAction)
-        console.log(modal)
+        if (name === '') {
+            alert('Please type the name of the item')
+        } else {
+            dispatch(addItem({name, amount, price}))
+        }
     }
 
     return (
         <div className="form-container">
-            <button onClick={closeModal} className="close-button restore">X</button>
+            <button onClick={() => { dispatch(showOrHideModalAction)} } className="close-button restore">X</button>
 
 
             <div className="form-main">
@@ -24,21 +44,21 @@ function Form() {
 
                     <div className="input-container restore">
                         <p>Name</p>
-                        <input type="text" placeholder="Name"></input>
+                        <input id="name" type="text" placeholder="Name" onChange={onHandleChange}></input>
                     </div>
 
                     <div className="input-container restore">
                         <p>Amount</p>
-                        <input type="number" placeholder="Amount"></input>
+                        <input id="amount" type="number" placeholder="Amount" onChange={onHandleChange}></input>
                     </div>
 
                     <div className="input-container restore">
                         <p>Price</p>
-                        <input type="Number" placeholder="Price"></input>
+                        <input id="price" type="Number" placeholder="Price" onChange={onHandleChange}></input>
                     </div>
 
                     <div className="input-container restore">
-                        <button className="button-add">Add Item</button>
+                        <button className="button-add" onClick={AddItem}>Add Item</button>
                     </div>
                 </form>
             </div>

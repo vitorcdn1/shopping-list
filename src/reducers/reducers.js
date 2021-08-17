@@ -1,4 +1,4 @@
-function modalReducer(state=true, action) {
+function modalReducer(state=false, action) {
     switch (action.type) {
         case "MODAL":
             return !state
@@ -7,6 +7,18 @@ function modalReducer(state=true, action) {
     }
 }
 
+function listReducer(state = [], action) {
+    switch (action.type) {
+
+        case "ADD_ITEM":
+            return [...state, action.payload]
+
+        default:
+            return state;
+    }
+}
+
 export {
-    modalReducer
+    modalReducer,
+    listReducer
 }

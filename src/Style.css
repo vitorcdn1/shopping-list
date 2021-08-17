@@ -71,6 +71,7 @@ header {
     width: 100vw;
     height: 100vh;
     background-color: rgba(30, 31, 41, 0.5);
+    transition: 0.5s;
 }
 
 .hide-modal {
@@ -141,3 +142,6 @@ header {
     opacity: 0.8;
     color: white;
 }
+
+/* Main Content */
+
