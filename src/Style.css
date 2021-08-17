@@ -1,15 +1,18 @@
 :root {
     --background-black: #1e1f29;
+    --green: #50fa7b;
 }
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 header {
     display: flex;
     justify-content: center;
     background-color: var(--background-black);
+    color: white;
 }
 
 .header {
@@ -24,7 +27,7 @@ header {
     color: white;
 }
 
-.button-restore {
+.restore, .restore button, .restore input {
     border: none;
     outline: none;
 }
@@ -40,7 +43,7 @@ header {
     font-size: 40px;
     border: 2px solid white;
     border-radius: 10px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .button-show-modal:hover {
@@ -54,4 +57,87 @@ header {
     .header {
         width: 70%;
     }
+}
+
+/* Modal */
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(30, 31, 41, 0.5);
+}
+
+.hide-modal {
+    display: none;
+}
+
+/* Form */
+
+.form-container {
+    width: 50vw;
+    height: 50vh;
+    padding: 20px;
+    background-color: black;
+    border-radius: 30px;
+}
+
+.close-button {
+    float: right;
+    background-color: black;
+    font-size: 25px;
+    font-weight: 900;
+    color:red;
+}
+
+.form-main {
+    margin-top: 30px;
+}
+
+.title-form {
+    text-align: center;
+    color: white;
+}
+
+.form {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.input-container {
+    width: 60%;
+    margin-top: 10px;
+}
+
+.input-container p {
+    padding: 5px;
+    color: white;
+}
+
+.input-container input, .form button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.button-add {
+    background-color: var(--green);
+    color: var(--background-black);
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.button-add:hover {
+    opacity: 0.8;
+    color: white;
 }
