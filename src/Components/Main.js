@@ -1,31 +1,19 @@
-import { useSelector } from "react-redux";
-
+import Table from './Table'
+import { useSelector } from 'react-redux'
 
 function Main() {
 
-    const items = useSelector(state => { return state.list })
+    const price = useSelector(state => { return state.price })
 
     return (
         <div className="Main">
-            <h1>Test</h1>
+            <h1>Products</h1>
 
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Price</th>
-                </tr>
+            <Table></Table>
 
-                {items.map(item => {
-                    return (
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.amount}</td>
-                            <td>R$ {item.price}</td>
-                        </tr>
-                    )
-                })}
-            </table>
+            <div className="result">
+                <h1>Total: {price}</h1>
+            </div>
         </div>
     );
 }

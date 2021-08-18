@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { showOrHideModalAction } from '../actions/actions'
 import { addItem } from '../actions/actions'
+import { priceTotal } from '../actions/actions'
 
 function Form() {
 
@@ -12,15 +13,13 @@ function Form() {
     const dispatch = useDispatch()
 
     function onHandleChange(event) {
-        if (event.target.id === 'name') {
-            setName(event.target.value)
+        const reducers = {
+            name : () => { setName(event.target.value)},
+            amount : () => { setAmount(event.target.value) },
+            price : () => { setPrice(event.target.value) }
         }
-        if (event.target.id === 'amount') {
-            setAmount(event.target.value)
-        }
-        if (event.target.id === 'price') {
-            setPrice(event.target.value)
-        }
+        
+        reducers[event.target.id]()
     }
 
     function AddItem(event) {
@@ -28,7 +27,12 @@ function Form() {
         if (name === '') {
             alert('Please type the name of the item')
         } else {
-            dispatch(addItem({name, amount, price}))
+            dispatch(addItem({name, amount, price }))
+            dispatch(priceTotal(true, Number(price) * Number(amount)))
+            dispatch(showOrHideModalAction)
+            setName('')
+            setAmount(1)
+            setPrice(1.00)
         }
     }
 
@@ -44,17 +48,17 @@ function Form() {
 
                     <div className="input-container restore">
                         <p>Name</p>
-                        <input id="name" type="text" placeholder="Name" onChange={onHandleChange}></input>
+                        <input id="name" type="text" placeholder="Name" onChange={onHandleChange} value={name}></input>
                     </div>
 
                     <div className="input-container restore">
                         <p>Amount</p>
-                        <input id="amount" type="number" placeholder="Amount" onChange={onHandleChange}></input>
+                        <input id="amount" type="number" placeholder="Amount" onChange={onHandleChange} value={amount}></input>
                     </div>
 
                     <div className="input-container restore">
                         <p>Price</p>
-                        <input id="price" type="Number" placeholder="Price" onChange={onHandleChange}></input>
+                        <input id="price" type="Number" placeholder="Price" onChange={onHandleChange} value={price}></input>
                     </div>
 
                     <div className="input-container restore">

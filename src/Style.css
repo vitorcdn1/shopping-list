@@ -145,3 +145,31 @@ header {
 
 /* Main Content */
 
+.Main {
+    
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Main h1 {
+    margin-bottom: 10px;
+}
+
+.table-container {
+    border-collapse: collapse;
+    color: white;
+    background-color: var(--background-black);
+}
+
+.table-container , .table-container td, .table-container th {
+    border: 1px solid #1e1f29;
+    padding: 10px;
+    text-align: center;
+}
+
+.result {
+    margin-top: 20px;
+}

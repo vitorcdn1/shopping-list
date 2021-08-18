@@ -18,7 +18,20 @@ function listReducer(state = [], action) {
     }
 }
 
+function priceReducer(state = 0, action) {
+    switch (action.type) {
+        case "INCREASE_PRICE":
+            return state + action.payload;
+
+        case "DECREASE_PRICE":
+            return state - action.payload;
+        default:
+            return state;
+    }
+}
+
 export {
     modalReducer,
-    listReducer
+    listReducer,
+    priceReducer
 }
